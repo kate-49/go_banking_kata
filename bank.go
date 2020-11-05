@@ -13,8 +13,13 @@ func (a *Account) Balance() int {
 
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
+
 	a.Statement += "You added " + strconv.Itoa(deposit) + ". "
-	a.Statement += "Balance is now " + strconv.Itoa(a.Amount) + ". "
+	a.Statement += "Balance: " + strconv.Itoa(a.Amount) + ". "
+}
+
+func (a *Account) Withdraw(value int) {
+	a.Amount -= value
 }
 
 func (a *Account) BankStatement() string {
