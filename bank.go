@@ -13,9 +13,8 @@ func (a *Account) Balance() int {
 
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
-	newStatement := "You added "
-	newStatement += strconv.Itoa(deposit)
-	a.Statement += newStatement
+	a.Statement += "You added " + strconv.Itoa(deposit) + ". "
+	a.Statement += "Balance is now " + strconv.Itoa(a.Amount) + ". "
 }
 
 func (a *Account) BankStatement() string {
