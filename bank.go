@@ -6,9 +6,10 @@ import (
 )
 
 type Account struct {
-	Amount    int
-	Statement string
+	Amount int
 }
+
+var m = make(map[string]int)
 
 // type AccountErr string
 
@@ -22,24 +23,33 @@ func (a *Account) Balance() int {
 
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
+	total := a.Amount
+	comment := ""
+	comment += "You added " + strconv.Itoa(deposit) + ". "
+	comment += "Balance: " + strconv.Itoa(a.Amount) + ". \n"
 
-	a.Statement += "You added " + strconv.Itoa(deposit) + ". "
-	a.Statement += "Balance: " + strconv.Itoa(a.Amount) + ". "
+	m[comment] = total
 }
 
-func (a *Account) Withdraw(value int) error {
-	if value > a.Amount {
-		return NotEnoughMoneyInAccount
-	} else {
-		a.Amount -= value
+// func (a *Account) Withdraw(value int) error {
+// 	if value > a.Amount {
+// 		return NotEnoughMoneyInAccount
+// 	} else {
+// 		a.Amount -= value
 
-		a.Statement += "You withdrew " + strconv.Itoa(value) + ". "
-		a.Statement += "Balance: " + strconv.Itoa(a.Amount) + ". "
-		return nil
-	}
+// 		a.Statement += "You withdrew " + strconv.Itoa(value) + ". "
+// 		a.Statement += "Balance: " + strconv.Itoa(a.Amount) + ". \n"
+// 		return nil
+// 	}
 
-}
+// }
 
 func (a *Account) BankStatement() string {
-	return a.Statement
+	returnStatement := ""
+
+	for comment, _ := range m {
+		returnStatement += comment
+	}
+
+	return returnStatement
 }
