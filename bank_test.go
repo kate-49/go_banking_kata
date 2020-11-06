@@ -79,25 +79,25 @@ func TestCanWithdrawMoney(t *testing.T) {
 	})
 }
 
-func TestBankStatementPrints1Interactions(t *testing.T) {
-	// 	t.Run("Single statement", func(t *testing.T) {
-	// 		account6 := Account{50}
-	// 		account6.Add(10)
-	// 		got := account6.BankStatement()
-	// 		want := "You added 10. Balance: 60. \n"
+// func TestBankStatementPrints1Interactions(t *testing.T) {
+// 	t.Run("Single statement", func(t *testing.T) {
+// 		account6 := Account{50}
+// 		account6.Add(10)
+// 		got := account6.BankStatement()
+// 		want := "You added 10. Balance: 60. \n"
 
-	// 		assertStrings(t, got, want)
-	// 	})
+// 		assertStrings(t, got, want)
+// 	})
 
-	t.Run("multiple statement", func(t *testing.T) {
-		account := Account{20}
-		account.Add(1)
-		account.Withdraw(2)
-		account.Add(5)
-		account.Withdraw(1)
-		got := account.BankStatement()
-		want := "You added 1. Balance: 21. \nYou withdrew 2. Balance: 19. \nYou added 5. Balance: 24. \nYou withdrew 1. Balance: 23. \n"
+// 	t.Run("multiple statement", func(t *testing.T) {
+// 		account := Account{20}
+// 		account.Add(1)
+// 		account.Withdraw(2)
+// 		account.Add(5)
+// 		account.Withdraw(1)
+// 		got := account.BankStatement()
+// 		want := "You added 1. Balance: 21. \nYou withdrew 2. Balance: 19. \nYou added 5. Balance: 24. \nYou withdrew 1. Balance: 23. \n"
 
-		assertStrings(t, got, want)
-	})
-}
+// 		assertStrings(t, got, want)
+// 	})
+// }
