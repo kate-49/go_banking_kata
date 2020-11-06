@@ -3,13 +3,18 @@ package bank
 import (
 	"errors"
 	"strconv"
+	"time"
 )
 
 type Account struct {
-	Amount int
+	Amount    int
+	Statement *UserStatement
 }
 
-var m = make(map[string]int)
+type UserStatement struct {
+	Update string
+	Date   time.Time
+}
 
 var (
 	NotEnoughMoneyInAccount = errors.New("You do not have enough money in your account.")
@@ -21,12 +26,12 @@ func (a *Account) Balance() int {
 
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
-	total := a.Amount
+
 	addComment := ""
 	addComment += "You added " + strconv.Itoa(deposit) + ". "
 	addComment += "Balance: " + strconv.Itoa(a.Amount) + ". \n"
 
-	m[addComment] = total
+	a.Statement[addComment] = time.Now()
 }
 
 func (a *Account) Withdraw(value int) error {
@@ -40,7 +45,7 @@ func (a *Account) Withdraw(value int) error {
 		withdrawComment += "You withdrew " + strconv.Itoa(value) + ". "
 		withdrawComment += "Balance: " + strconv.Itoa(a.Amount) + ". \n"
 
-		m[withdrawComment] = total
+		a.Statement[withdrawComment] = total
 		return nil
 	}
 
@@ -49,7 +54,7 @@ func (a *Account) Withdraw(value int) error {
 func (a *Account) BankStatement() string {
 	returnStatement := ""
 
-	for comment, _ := range m {
+	for comment, _ := range Account.m {
 		returnStatement += comment
 	}
 
