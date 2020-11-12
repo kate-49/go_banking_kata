@@ -15,6 +15,10 @@ func (a *Account) Balance() int {
 	return a.Amount
 }
 
+func (a *Account) BankStatement() []string {
+	return a.Statement
+}
+
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
 	a.Statement = append(a.Statement, "test statement")
@@ -29,8 +33,4 @@ func (a *Account) Withdraw(value int) error {
 		return nil
 	}
 
-}
-
-func (a *Account) BankStatement() []string {
-	return a.Statement
 }

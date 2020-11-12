@@ -1,6 +1,7 @@
 package bank
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -79,25 +80,30 @@ func TestCanWithdrawMoney(t *testing.T) {
 	})
 }
 
-// func TestBankStatementPrints1Interactions(t *testing.T) {
-// 	t.Run("Single statement", func(t *testing.T) {
-// 		account6 := Account{50}
-// 		account6.Add(10)
-// 		got := account6.BankStatement()
-// 		want := "You added 10. Balance: 60. \n"
+func TestBankStatementPrints1Interactions(t *testing.T) {
+	t.Run("Single statement", func(t *testing.T) {
+		account6 := Account{50, []string{""}}
+		account6.Add(10)
+		got := account6.BankStatement()
+		want := []string{"You added 10. Balance: 60."}
 
-// 		assertStrings(t, got, want)
-// 	})
+		if (reflect.DeepEqual(got, want)) != true {
+			t.Errorf("not equal")
+		}
 
-// 	t.Run("multiple statement", func(t *testing.T) {
-// 		account := Account{20}
-// 		account.Add(1)
-// 		account.Withdraw(2)
-// 		account.Add(5)
-// 		account.Withdraw(1)
-// 		got := account.BankStatement()
-// 		want := "You added 1. Balance: 21. \nYou withdrew 2. Balance: 19. \nYou added 5. Balance: 24. \nYou withdrew 1. Balance: 23. \n"
+	})
 
-// 		assertStrings(t, got, want)
-// 	})
-// }
+	// t.Run("multiple statement", func(t *testing.T) {
+	// 	account := Account{20, []string{""}}
+	// 	account.Add(1)
+	// 	account.Withdraw(2)
+	// 	account.Add(5)
+	// 	account.Withdraw(1)
+	// 	got := account.BankStatement()
+	// 	want := []string{"You added 1. Balance: 21.", "You withdrew 2. Balance: 19.", "You added 5. Balance: 24.", "You withdrew 1. Balance: 23."}
+
+	// 	if got != want {
+	// 		t.Errorf("got %d want %d", got, want)
+	// 	}
+	// })
+}
