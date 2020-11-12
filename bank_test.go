@@ -93,17 +93,23 @@ func TestBankStatementPrints1Interactions(t *testing.T) {
 
 	})
 
-	// t.Run("multiple statement", func(t *testing.T) {
-	// 	account := Account{20, []string{""}}
-	// 	account.Add(1)
-	// 	account.Withdraw(2)
-	// 	account.Add(5)
-	// 	account.Withdraw(1)
-	// 	got := account.BankStatement()
-	// 	want := []string{"You added 1. Balance: 21.", "You withdrew 2. Balance: 19.", "You added 5. Balance: 24.", "You withdrew 1. Balance: 23."}
+	t.Run("multiple statement", func(t *testing.T) {
+		account := Account{20, []string{""}}
+		account.Add(1)
+		account.Withdraw(2)
+		account.Add(5)
+		account.Withdraw(1)
+		got := account.BankStatement()
+		want := []string{
+			"",
+			"You added 1. Balance: 21.",
+			"You withdrew 2. Balance: 19.",
+			"You added 5. Balance: 24.",
+			"You withdrew 1. Balance: 23.",
+		}
 
-	// 	if got != want {
-	// 		t.Errorf("got %d want %d", got, want)
-	// 	}
-	// })
+		if (reflect.DeepEqual(got, want)) != true {
+			t.Errorf("Got %v, want %v", got, want)
+		}
+	})
 }
