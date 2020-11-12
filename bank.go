@@ -1,6 +1,9 @@
 package bank
 
-import "errors"
+import (
+	"errors"
+	"strconv"
+)
 
 type Account struct {
 	Amount    int
@@ -21,7 +24,7 @@ func (a *Account) BankStatement() []string {
 
 func (a *Account) Add(deposit int) {
 	a.Amount += deposit
-	a.Statement = append(a.Statement, "test statement")
+	a.Statement = append(a.Statement, "You added "+strconv.Itoa(deposit)+". Balance: "+strconv.Itoa(a.Amount)+".")
 }
 
 func (a *Account) Withdraw(value int) error {

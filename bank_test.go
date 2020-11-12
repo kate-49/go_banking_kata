@@ -61,7 +61,7 @@ func TestCanAddMoney(t *testing.T) {
 func TestCanWithdrawMoney(t *testing.T) {
 
 	t.Run("multiple withdawl", func(t *testing.T) {
-		account3 := Account{650, []string{""}}
+		account3 := Account{650, []string{" "}}
 		account3.Withdraw(10)
 		account3.Withdraw(1)
 		account3.Withdraw(2)
@@ -85,10 +85,10 @@ func TestBankStatementPrints1Interactions(t *testing.T) {
 		account6 := Account{50, []string{""}}
 		account6.Add(10)
 		got := account6.BankStatement()
-		want := []string{"You added 10. Balance: 60."}
+		want := []string{"", "You added 10. Balance: 60."}
 
 		if (reflect.DeepEqual(got, want)) != true {
-			t.Errorf("not equal")
+			t.Errorf("Got %v, want %v", got, want)
 		}
 
 	})
