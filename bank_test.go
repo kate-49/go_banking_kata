@@ -42,20 +42,20 @@ func TestCanCheckBalance(t *testing.T) {
 	assertValues(t, got, want)
 }
 
-// func TestCanAddMoney(t *testing.T) {
+func TestCanAddMoney(t *testing.T) {
 
-// 	t.Run("multiple additions", func(t *testing.T) {
-// 		account2 := Account{100}
-// 		account2.Add(20)
-// 		account2.Add(12)
-// 		account2.Add(8)
+	t.Run("multiple additions", func(t *testing.T) {
+		account2 := Account{100, []string{""}}
+		account2.Add(20)
+		account2.Add(12)
+		account2.Add(8)
 
-// 		got := account2.Balance()
-// 		want := 140
+		got := account2.Balance()
+		want := 140
 
-// 		assertValues(t, got, want)
-// 	})
-// }
+		assertValues(t, got, want)
+	})
+}
 
 func TestCanWithdrawMoney(t *testing.T) {
 
