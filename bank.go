@@ -32,7 +32,7 @@ func (a *Account) Withdraw(value int) error {
 		return NotEnoughMoneyInAccount
 	} else {
 		a.Amount -= value
-		a.Statement = append(a.Statement, "test statement")
+		a.Statement = append(a.Statement, "You withdrew "+strconv.Itoa(value)+". Balance: "+strconv.Itoa(a.Amount)+".")
 		return nil
 	}
 
