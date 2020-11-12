@@ -34,13 +34,13 @@ func assertError(t *testing.T, got, want error) {
 	}
 }
 
-// func TestCanCheckBalance(t *testing.T) {
-// 	account1 := Account{10}
-// 	got := account1.Balance()
-// 	want := 10
+func TestCanCheckBalance(t *testing.T) {
+	account1 := Account{10, []string{""}}
+	got := account1.Balance()
+	want := 10
 
-// 	assertValues(t, got, want)
-// }
+	assertValues(t, got, want)
+}
 
 // func TestCanAddMoney(t *testing.T) {
 
@@ -60,7 +60,7 @@ func assertError(t *testing.T, got, want error) {
 func TestCanWithdrawMoney(t *testing.T) {
 
 	t.Run("multiple withdawl", func(t *testing.T) {
-		account3 := Account{650, ["test"]{0}}
+		account3 := Account{650, []string{""}}
 		account3.Withdraw(10)
 		account3.Withdraw(1)
 		account3.Withdraw(2)
@@ -71,12 +71,12 @@ func TestCanWithdrawMoney(t *testing.T) {
 		assertValues(t, got, want)
 	})
 
-	// t.Run("can't withdraw money if not enough in account", func(t *testing.T) {
-	// 	account4 := Account{20}
-	// 	err := account4.Withdraw(40)
+	t.Run("can't withdraw money if not enough in account", func(t *testing.T) {
+		account4 := Account{20, []string{""}}
+		err := account4.Withdraw(40)
 
-	// 	assertError(t, err, NotEnoughMoneyInAccount)
-	// })
+		assertError(t, err, NotEnoughMoneyInAccount)
+	})
 }
 
 // func TestBankStatementPrints1Interactions(t *testing.T) {
